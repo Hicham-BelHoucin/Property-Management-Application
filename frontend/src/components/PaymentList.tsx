@@ -17,7 +17,7 @@ import Loading from "./spinner";
 
 const PaymentList = () => {
 
-  const { data: payments, error, isLoading, mutate } = useSWR<Payment[]>('/payments', fetcher, {
+  const { data: payments, isLoading, mutate } = useSWR<Payment[]>('/payments', fetcher, {
     revalidateOnFocus: false,
     // retryon error
     errorRetryCount: 0,
@@ -100,7 +100,7 @@ const PaymentList = () => {
                 </TableRow>
               );
             })}
-            {!payments && !isLoading && (
+            {(!payments || !payments.length) && !isLoading && (
               <TableRow >
                 <TableCell colSpan={5} >
                   No payments found. Click on the Add Payment button to add a

@@ -10,7 +10,7 @@ from source.database import db  # Adjust this import according to your project s
 fake = Faker()
 
 # Create a new SQLAlchemy engine and session
-DATABASE_URL = "postgresql+psycopg2://username:password@localhost:5432/property_management_db"  # Update with your database URL
+DATABASE_URL = "postgresql+psycopg2://username:password@db:5432/property_management_db"  # Update with your database URL
 engine = create_engine(DATABASE_URL)
 Session = sessionmaker(bind=engine)
 session = Session()

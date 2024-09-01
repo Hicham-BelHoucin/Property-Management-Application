@@ -1,13 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { deleteProperty, fetcher, getProperties, Property } from "../services/api";
+import { useEffect, } from "react";
+import { deleteProperty, fetcher, Property } from "../services/api";
 import Checkbox from "@mui/material/Checkbox";
 import {
   Typography,
-  List,
-  ListItem,
-  ListItemText,
-  Card,
-  Container,
+
   Box,
   Button,
   Paper,
@@ -134,7 +130,7 @@ const PropertyList = ({
                 </TableCell>
               </TableRow>
             ))}
-            {!properties && !isLoading && (
+            {(!properties || !properties.length) && !isLoading && (
               <TableRow >
                 <TableCell colSpan={5} >
                   No properties found. Click on the Add property button to add a

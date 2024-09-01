@@ -52,9 +52,9 @@ class Login(Resource):
     @auth_ns.response(400, 'Invalid input')
 
     def post(self):
-        schema = LoginSchema()
         try:
-            data = schema.load(request.json)
+            data = request.json
+            print(data)
             token, status_code = auth_service.login_user(data)
             if token:
                 return token, status_code

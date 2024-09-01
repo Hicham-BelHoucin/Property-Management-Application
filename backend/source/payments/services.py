@@ -52,8 +52,6 @@ class PaymentService:
     def get_payments(self):
         try:
             payments = Payment.query.all()
-            if not payments:
-                return {"error": "No payments found"}, 404
             return payments, 200
 
         except SQLAlchemyError as e:

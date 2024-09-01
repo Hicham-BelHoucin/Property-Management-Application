@@ -41,6 +41,7 @@ class AuthService:
         try:
             # Fetch user by email
             user = User.query.filter_by(email=data['email']).first()
+            print(user)
             if not user or not check_password_hash(user.password, data['password']):
                 return {"error": "Invalid email or password"}, 401
 

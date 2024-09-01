@@ -32,8 +32,7 @@ class PropertyService:
     def get_properties(self):
         try:
             properties = Property.query.all()
-            if not properties:
-                return {"error": "No properties found"}, 404
+
             return properties, 200
 
         except SQLAlchemyError as e:

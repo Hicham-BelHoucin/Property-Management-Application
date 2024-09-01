@@ -52,6 +52,7 @@ class PropertyList(Resource):
             properties, status_code = property_service.get_properties()
             return [property.to_dict() for property in properties], status_code
         except Exception as e:
+            print(e)
             return {'error': "An unexpected error occurred while retrieving properties.", "details": str(e)}, 500
 
 @property_ns.route('/<int:id>')

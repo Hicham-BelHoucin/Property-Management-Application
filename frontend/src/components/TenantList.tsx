@@ -105,7 +105,7 @@ const TenantList = ({
                 </TableCell>
               </TableRow>
             ))}
-            {!tenants && !isLoading && (
+            {(!tenants || tenants.length) && !isLoading && (
               <TableRow >
                 <TableCell colSpan={5} >
                   No tenants found. Click on the Add tenant button to add a

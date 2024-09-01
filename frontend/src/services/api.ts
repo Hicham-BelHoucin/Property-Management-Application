@@ -48,8 +48,10 @@ apiClient.interceptors.response.use(
     } else if (response?.status === 500) {
       toast.error("Internal server error");
     } else if (response?.status === 401) {
-      console.log("response");
-      toast.error(response?.data?.message || "Unauthorized");
+      console.log("response", response);
+      toast.error(
+        response?.data?.message || response?.data?.error || "Unauthorized"
+      );
     } else if (response?.status === 403) {
       toast.error("Forbidden");
     }

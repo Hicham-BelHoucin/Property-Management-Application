@@ -66,8 +66,6 @@ class TenantService:
     def get_tenants(self):
         try:
             tenants = Tenant.query.all()
-            if not tenants:
-                return {"error": "No tenants found"}, 404
             return tenants, 200
 
         except Exception as e:

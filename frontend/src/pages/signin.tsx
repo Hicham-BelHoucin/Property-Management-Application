@@ -11,8 +11,6 @@ import Typography from "@mui/material/Typography";
 import LockIcon from "@mui/icons-material/Lock";
 import Box from "@mui/material/Box";
 import { login } from "../services/api";
-import { toast } from "react-toastify";
-import { redirect } from "react-router-dom";
 import { useAuth } from "../context/auth.context";
 
 export default function SignIn() {

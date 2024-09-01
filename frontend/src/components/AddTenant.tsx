@@ -69,15 +69,15 @@ const AddTenant = ({ handleClose, _tenant }: {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    {
-      _tenant
-        ? updateTenant(tenant).then(() => {
-          handleClose();
-        })
-        : addTenant(tenant).then(() => {
-          handleClose();
-        })
-    }
+
+    _tenant
+      ? updateTenant(tenant).then(() => {
+        handleClose();
+      })
+      : addTenant(tenant).then(() => {
+        handleClose();
+      })
+
   };
 
 
