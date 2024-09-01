@@ -52,6 +52,8 @@ The Property Management Application is a web-based solution for managing propert
 
 # Note: Those secrets are not important for this project, but in a real-world scenario, you should never commit secrets to the repository.
 
+# Note: The frontend may have some unfinished features.
+
 # Clone the repository
 
 ```SHELL

@@ -34,7 +34,7 @@ const PropertyList = ({
   open?: boolean;
   setProperty?: (property: Property) => void;
 }) => {
-  const { data: properties, error, isLoading, mutate } = useSWR<Property[]>('/properties', fetcher, {
+  const { data: properties, isLoading, mutate } = useSWR<Property[]>('/properties', fetcher, {
     revalidateOnFocus: false,
     // retryon error
     errorRetryCount: 0,
@@ -47,7 +47,7 @@ const PropertyList = ({
     (async () => {
       await mutate()
     })();
-  }, [open]);
+  }, [open, mutate]);
 
   if (isLoading) {
     return <Loading sx={{

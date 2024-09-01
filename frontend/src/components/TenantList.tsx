@@ -1,20 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { deleteTenant, fetcher, getTenants, Tenant } from "../services/api";
+import { useEffect } from "react";
+import { deleteTenant, fetcher, Tenant } from "../services/api";
 import {
-  Typography,
-  List,
-  ListItem,
-  ListItemText,
-  Card,
-  Container,
-  Box,
+  Typography, Box,
   Button,
   Paper,
   Table,
   TableHead,
   TableRow,
   TableBody,
-  TableCell,
+  TableCell
 } from "@mui/material";
 import useSWR from "swr";
 import Loading from "./spinner";
@@ -29,19 +23,18 @@ const TenantList = ({
   setOpen?: (open: boolean) => void;
   open?: boolean;
 }) => {
-  const { data: tenants, error, isLoading, mutate } = useSWR<Tenant[]>('/tenants', fetcher, {
+  const { data: tenants, isLoading, mutate } = useSWR<Tenant[]>('/tenants', fetcher, {
     revalidateOnFocus: false,
     // retryon error
     errorRetryCount: 0,
     shouldRetryOnError: false
-
   })
 
   useEffect(() => {
     (async () => {
       await mutate()
     })();
-  }, [open]);
+  }, [open, mutate]);
   if (isLoading) {
     return <Loading sx={{
       maxHeight: "300px",
@@ -105,7 +98,7 @@ const TenantList = ({
                 </TableCell>
               </TableRow>
             ))}
-            {(!tenants || tenants.length) && !isLoading && (
+            {(!tenants || !tenants.length) && !isLoading && (
               <TableRow >
                 <TableCell colSpan={5} >
                   No tenants found. Click on the Add tenant button to add a

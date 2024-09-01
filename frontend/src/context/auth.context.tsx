@@ -25,11 +25,17 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
 }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const location = useLocation();
+
 
   React.useEffect(() => {
     (async () => {
       try {
+        if (location.pathname === "/login") {
+          return;
+        }
         const property = await getProperties();
+        console.log("property:", property);
         if (property) {
           setIsAuthenticated(true);
         }
@@ -52,7 +58,6 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
   };
 
 
-  const location = useLocation();
 
   if (isLoading) {
     return <Loading />;
